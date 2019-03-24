@@ -7,13 +7,13 @@
 <ui:composition template="layout.xhtml">
     <ui:define name="content">
         <h:form id="noteForm">
-            <p:panel header="Note Details">
+            <p:panel header="Do you really want to delete this note?">
                 <h:panelGrid columns="1">
                     <p:outputLabel for="name" value="Name: " />
-                    <p:inputText id="name" value="#{noteEdit.note.name}" />
+                    <p:inputText readonly="true" id="name" value="#{noteDelete.note.name}" />
                     <p:outputLabel for="content" value="Content: " />
-                    <p:inputText id="content" value="#{noteEdit.note.content}" />
-                    <h:commandButton value="Save" action="#{noteEdit.save}" />
+                    <p:inputText readonly="true" id="content" value="#{noteDelete.note.content}" />
+                    <h:commandButton value="Delete" action="#{noteDelete.delete}" />
                 </h:panelGrid>
             </p:panel>
         </h:form>

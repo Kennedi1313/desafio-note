@@ -25,6 +25,12 @@
                         <f:facet name="header">Content</f:facet>
                         <h:outputText value="#{note.content}" />
                     </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">Options</f:facet>
+                        <h:outputLink value="/edit/#{note.id}">| Edit |</h:outputLink>
+                        <h:outputLink value="/delete/#{note.id}">| Delete |</h:outputLink>
+                    </p:column>
                 </p:dataTable>
             </p:panel>
         </h:form>

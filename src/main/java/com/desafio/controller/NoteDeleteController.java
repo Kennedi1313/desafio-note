@@ -13,28 +13,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.desafio.model.Note;
 import com.desafio.repository.NoteRepository;
 
 @Controller
 @Scope(value = "session")
-@Component(value = "noteEdit")
-@ELBeanName(value = "noteEdit")
-@Join(path = "/edit/{id}", to = "/edit-form.jsf")
-public class NoteEditController {
+@Component(value = "noteDelete")
+@ELBeanName(value = "noteDelete")
+@Join(path = "/delete/{id}", to = "/delete.jsf")
+public class NoteDeleteController {
 	@Autowired
 	private NoteRepository noteRepository;
 	private Note note;
 	private Integer noteId;
 	
-	
-	
-	public String save() {
-		noteRepository.save(note);
+	public String delete() {
+		noteRepository.delete(note);
 		return "/note-list.xhtml?faces-redirect=true";
 	}
 	
@@ -64,5 +59,4 @@ public class NoteEditController {
 	public void setNoteId(Integer noteId) {
 		this.noteId = noteId;
 	}
-
 }
