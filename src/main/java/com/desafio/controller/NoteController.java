@@ -2,49 +2,47 @@ package com.desafio.controller;
 
 import java.util.List;
 
+import org.ocpsoft.rewrite.annotation.Join;
+import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.desafio.model.Note;
 import com.desafio.repository.NoteRepository;
 
 @Controller
-@RequestMapping("/")
+@Scope(value = "session")
+@Component(value = "noteController")
+@ELBeanName(value = "noteController")
+@Join(path = "/create", to = "/create-form.jsf")
 public class NoteController {
 	@Autowired
 	private NoteRepository noteRepository;
-
-	@GetMapping("/create")
-	public String cadastro(Model model) {
-		return "/create";
-	}
-
-	@GetMapping("/index")
-	public String index() {
-		return "/index";
-	}
-
-	@PostMapping("/create")
-	public String create(@ModelAttribute("note") Note note) {
+	private Note note = new Note();
+	
+	public String save() {
 		noteRepository.save(note);
-		return "redirect:/listar";
+		note = new Note();
+		return "/note-list.xhtml?faces-redirect=true";
+	}
+	
+	public Note getNote() {
+		return note;
 	}
 
-	@GetMapping("/listar")
-	public String index(Model model) {
-		List<Note> listaNotes = noteRepository.findAll();
-		if (listaNotes != null) {
-			model.addAttribute("notes", listaNotes);
-		}
-		return "/index";
+	public void setNote(Note note) {
+		this.note = note;
 	}
 
+	
+	/* FAZER ISSO DEPOIS
 	@GetMapping("editar/{id}")
 	public String editar(@PathVariable Integer id, Model model) {
 		// Note note = noteRepository.findById(id);
@@ -65,5 +63,7 @@ public class NoteController {
 		noteRepository.save(note);
 		return "redirect:/listar";
 	}
+	
+	*/
 
 }
