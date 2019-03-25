@@ -29,8 +29,10 @@
                     
                     <p:column>
                         <f:facet name="header">Options</f:facet>
-                        <h:outputLink class="btn btn-outline-secondary btn-lg" value="/edit/#{note.id}">Edit</h:outputLink>
-                        <h:outputLink class="btn btn-outline-danger btn-lg" value="/delete/#{note.id}">Delete</h:outputLink>
+                        <div class="btn-group">
+                        	<h:outputLink class="btn btn-outline-secondary btn-lg" value="/edit/#{note.id}">Edit</h:outputLink>
+                        	<h:outputLink class="btn btn-outline-danger btn-lg" value="/delete/#{note.id}">Delete</h:outputLink>
+                        </div>
                     </p:column>
                 </p:dataTable>
             </p:panel>
