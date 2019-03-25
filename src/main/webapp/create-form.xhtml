@@ -7,15 +7,19 @@
 <ui:composition template="layout.xhtml">
     <ui:define name="content">
         <h:form id="noteForm">
+        	<div class="container" >
             <p:panel header="Note Details">
                 <h:panelGrid columns="1">
                     <p:outputLabel for="name" value="Name: " />
                     <p:inputText id="name" value="#{noteController.note.name}" />
                     <p:outputLabel for="content" value="Content: " />
-                    <p:inputText id="content" value="#{noteController.note.content}" />
-                    <h:commandButton value="Save" action="#{noteController.save}" />
+                    <p:inputTextarea id="content" value="#{noteController.note.content}" />
+                    
+                    <h:commandButton class="btn btn-success" value="Save" action="#{noteController.save}" />
+                    
                 </h:panelGrid>
             </p:panel>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>

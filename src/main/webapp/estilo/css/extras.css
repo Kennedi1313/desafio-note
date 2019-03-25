@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+
+.required:after {
+  content:" *"; 
+  color: red;
+}
+.usuarioLogado {
+	padding-right: 20px;	
+	font-size: 18px;
+	color: rgb(211,211,211);
+}
+
+.hover-big-icons {
+	filter: opacity(70%);
+	
+}

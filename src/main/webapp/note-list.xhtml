@@ -9,7 +9,8 @@
 <ui:composition template="layout.xhtml">
     <ui:define name="content">
         <h:form id="form">
-            <p:panel header="Notes List">
+            <div class="container" >
+            <p:panel header="Your Notes">
                 <p:dataTable id="table" var="note" value="#{noteList.notes}">
                     <p:column>
                         <f:facet name="header"># Id</f:facet>
@@ -28,11 +29,12 @@
                     
                     <p:column>
                         <f:facet name="header">Options</f:facet>
-                        <h:outputLink value="/edit/#{note.id}">| Edit |</h:outputLink>
-                        <h:outputLink value="/delete/#{note.id}">| Delete |</h:outputLink>
+                        <h:outputLink class="btn btn-outline-secondary btn-lg" value="/edit/#{note.id}">Edit</h:outputLink>
+                        <h:outputLink class="btn btn-outline-danger btn-lg" value="/delete/#{note.id}">Delete</h:outputLink>
                     </p:column>
                 </p:dataTable>
             </p:panel>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>
