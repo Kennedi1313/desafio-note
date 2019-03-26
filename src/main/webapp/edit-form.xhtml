@@ -2,25 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="layout.xhtml">
-    <ui:define name="content">
-        <h:form id="noteForm">
-        	<div class="container" >
-            <p:panel header="Note Details">
-                <h:panelGrid columns="1">
-                    <p:outputLabel for="name" value="Name: " />
-                    <p:inputText id="name" value="#{noteEdit.note.name}" />
-                    <p:outputLabel for="content" value="Content: " />
-                    <p:inputTextarea id="content" value="#{noteEdit.note.content}" />
-                    
-                    <h:commandButton class="btn btn-success" value="Save" action="#{noteEdit.save}" />
-                    
-                </h:panelGrid>
-            </p:panel>
-            </div>
-        </h:form>
-    </ui:define>
+	<ui:define name="content">
+		<div class="container">
+			<p:panel header="Note Details">
+				<h:form id="noteForm" class="form-group">
+					<br></br>
+					<div class="form-group row">
+						<p:outputLabel class="col-sm-2 col-form-label" for="name" value="Name: " />
+						<div class="col-sm-10">
+							<p:inputText class="form-control" id="name" value="#{noteEdit.note.name}" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<p:outputLabel class="col-sm-2 col-form-label" for="content" value="Content: " />
+						<div class="col-sm-10">
+							<p:inputTextarea class="form-control" id="content" value="#{noteEdit.note.content}" />
+						</div>
+					</div>
+					<br></br>
+					<div class="form-group row mx-auto" style="width: 150px;">
+						<h:commandButton class="btn btn-success btn-lg btn-block" value="Save"
+							action="#{noteEdit.save}" />
+					</div>
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
 </ui:composition>
 </html>
