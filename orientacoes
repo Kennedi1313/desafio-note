@@ -1,0 +1,14 @@
+O projeto consiste em um bloco de anotações onde é possível salvar uma nova tarefa, editar ou deletar uma tarefa existente. 
+O aplicativo possue 4 telas:
+- A tela inical, que lista todas as tarefas cadastradas. rota "/"
+- A tela de criação de uma nova tarefa. rota "/create"
+- A tela de edição de uma tarefa existente. rota "/edit/{id}"
+- E a tela onde é possível deletar uma tarefa. rota "/delete/{id}"
+
+Em relação ao desafio proposto, foram atendidos os quesitos A, B, C, D, E, F, G e J.
+
+Para a execução do aplicativo em um ambiente local basta o eclipse estar instalado no computador. Uma 
+vez que o projeto tiver sido importado para o ambiente de trabalho (através da opção "Inport -> 
+Existing Maven Projects"), basta executar o "Maven install" e executar a aplicação como "Java application". 
+O processo é somente esse pois o banco de dados escolhido foi o H2, que não precisa de demais configurações,
+e o servidor Tomcat está embutido no projeto (por causa do gerador de projetos start.spring.io).
