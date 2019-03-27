@@ -22,33 +22,39 @@ import com.desafio.repository.NoteRepository;
 
 @Controller
 @Scope(value = "session")
+//nome do controlador dentro do contexto da aplicação
 @Component(value = "noteEdit")
 @ELBeanName(value = "noteEdit")
+//caminho que este controlador responde e a pagina que renderiza (utilizando URL Rewrite)
 @Join(path = "/edit/{id}", to = "/edit-form.jsf")
 public class NoteEditController {
 	@Autowired
 	private NoteRepository noteRepository;
 	private Note note;
 	private Integer noteId;
-	
-	
-	
+
+	// atualiza no banco a nota existente na variável note
 	public String save() {
 		noteRepository.save(note);
 		return "/note-list.xhtml?faces-redirect=true";
 	}
-	
+
+	// recupera a nota em questão do banco para ser exibida na tela (e
+	// posteriormente editada)
+	// as anotações são utilizadas para que o metodo seja executado antes da pagina
+	// ser renderizada
 	@Deferred
 	@RequestAction
 	@IgnorePostback
 	public void loadData() {
+		// recupera o id que foi enviado pela url
 		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 		noteId = Integer.parseInt(id);
 		Optional<Note> noteaux = noteRepository.findById(noteId);
 		if (noteaux.isPresent())
 			note = noteaux.get();
 	}
-	
+
 	public Note getNote() {
 		return note;
 	}

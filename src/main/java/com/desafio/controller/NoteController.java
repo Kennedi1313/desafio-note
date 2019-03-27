@@ -12,20 +12,23 @@ import com.desafio.repository.NoteRepository;
 
 @Controller
 @Scope(value = "session")
+//nome do controlador dentro do contexto da aplicação
 @Component(value = "noteController")
 @ELBeanName(value = "noteController")
+//caminho que este controlador responde e a pagina que renderiza (utilizando URL Rewrite)
 @Join(path = "/create", to = "/create-form.jsf")
 public class NoteController {
 	@Autowired
 	private NoteRepository noteRepository;
 	private Note note = new Note();
-	
+
+	// cadastra no banco as informações salvas na variável note
 	public String save() {
 		noteRepository.save(note);
 		note = new Note();
 		return "/note-list.xhtml?faces-redirect=true";
 	}
-	
+
 	public Note getNote() {
 		return note;
 	}
@@ -33,16 +36,5 @@ public class NoteController {
 	public void setNote(Note note) {
 		this.note = note;
 	}
-
-	
-	/* FAZER ISSO DEPOIS
-	@GetMapping("deletar/{id}")
-	public String deletar(@PathVariable Integer id, Model model) {
-		// Note note = noteRepository.findById(id);
-		// noteRepository.delete(note);
-		return "redirect:/listar";
-	}
-
-	*/
 
 }

@@ -19,31 +19,39 @@ import com.desafio.repository.NoteRepository;
 
 @Controller
 @Scope(value = "session")
+//nome do controlador dentro do contexto da aplicação
 @Component(value = "noteDelete")
 @ELBeanName(value = "noteDelete")
+//caminho que este controlador responde e a pagina que renderiza (utilizando URL Rewrite)
 @Join(path = "/delete/{id}", to = "/delete.jsf")
 public class NoteDeleteController {
 	@Autowired
 	private NoteRepository noteRepository;
 	private Note note;
 	private Integer noteId;
-	
+
+	// deleta do banco a nota existente na variavel note
 	public String delete() {
 		noteRepository.delete(note);
 		return "/note-list.xhtml?faces-redirect=true";
 	}
-	
+
+	// recupera a nota em questão do banco para ser exibida na tela (e
+	// posteriormente deletada)
+	// as anotações são utilizadas para que o metodo seja executado antes da pagina
+	// ser renderizada
 	@Deferred
 	@RequestAction
 	@IgnorePostback
 	public void loadData() {
+		// recupera o id que foi enviado pela url
 		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 		noteId = Integer.parseInt(id);
 		Optional<Note> noteaux = noteRepository.findById(noteId);
 		if (noteaux.isPresent())
 			note = noteaux.get();
 	}
-	
+
 	public Note getNote() {
 		return note;
 	}

@@ -16,21 +16,26 @@ import com.desafio.model.Note;
 import com.desafio.repository.NoteRepository;
 
 @Controller
-@Scope (value = "session")
-@Component (value = "noteList")
+@Scope(value = "session")
+// nome do controlador dentro do contexto da aplicação
+@Component(value = "noteList")
 @ELBeanName(value = "noteList")
+// caminho que este controlador responde e a pagina que renderiza (utilizando URL Rewrite)
 @Join(path = "/", to = "/note-list.jsf")
 public class NoteListController {
 	@Autowired
 	private NoteRepository noteRepository;
 	private List<Note> notes;
-	
+
+	// recupera a nota em questão do banco para ser exibida na tela
+	// as anotações são utilizadas para que o metodo seja executado antes da pagina
+	// ser renderizada
 	@Deferred
-    @RequestAction
-    @IgnorePostback
-    public void loadData() {
-        notes = noteRepository.findAll();
-    }
+	@RequestAction
+	@IgnorePostback
+	public void loadData() {
+		notes = noteRepository.findAll();
+	}
 
 	public List<Note> getNotes() {
 		return notes;
@@ -39,6 +44,5 @@ public class NoteListController {
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
 	}
-	
-	
+
 }

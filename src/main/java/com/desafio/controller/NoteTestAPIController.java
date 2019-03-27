@@ -20,23 +20,24 @@ public class NoteTestAPIController {
 	@Autowired
 	NoteRepository noteRepository;
 
+	// exibe na tela um json com todas as notas cadastradas através de um GET na
+	// rota /api
 	@GetMapping
 	public ResponseEntity<List<Note>> listAPI() {
 		return ResponseEntity.status(HttpStatus.OK).body(noteRepository.findAll());
 	}
-	
+
+	// cadastra no sistema uma nota recebida através de um POST na rota /api
 	@PostMapping
 	public ResponseEntity<Note> createAPI(@RequestBody Note note) {
-		
+
 		try {
 			noteRepository.save(note);
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(note);
+			return ResponseEntity.status(HttpStatus.CREATED).body(note);
 		} catch (Exception e) {
-			
-			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
-					.body(note);
-			
+
+			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(note);
+
 		}
-}
+	}
 }
