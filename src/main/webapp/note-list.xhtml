@@ -2,42 +2,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="layout.xhtml">
-    <ui:define name="content">
-        <h:form id="form">
-            <div class="container" >
-            <p:panel header="Your Notes">
-                <p:dataTable id="table" var="note" value="#{noteList.notes}">
-                    <p:column>
-                        <f:facet name="header"># Id</f:facet>
-                        <h:outputText value="#{note.id}" />
-                    </p:column>
+	<ui:define name="content">
+		<h:form id="form">
+			<div class="container">
+				<p:panel header="Your Notes">
+					<p:dataTable id="table" var="note" value="#{noteList.notes}">
+						<p:column>
+							<f:facet name="header"># Id</f:facet>
+							<h:outputText value="#{note.id}" />
+						</p:column>
 
-                    <p:column>
-                        <f:facet name="header">Name</f:facet>
-                        <h:outputText value="#{note.name}" />
-                    </p:column>
+						<p:column>
+							<f:facet name="header">Name</f:facet>
+							<h:outputText value="#{note.name}" />
+						</p:column>
 
-                    <p:column>
-                        <f:facet name="header">Content</f:facet>
-                        <h:outputText value="#{note.content}" />
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">Options</f:facet>
-                        <div class="btn-group">
-                        	<h:outputLink class="btn btn-outline-secondary btn-lg" value="/edit/#{note.id}">Edit</h:outputLink>
-                        	<h:outputLink class="btn btn-outline-danger btn-lg" value="/delete/#{note.id}">Delete</h:outputLink>
-                        </div>
-                    </p:column>
-                </p:dataTable>
-            </p:panel>
-            </div>
-        </h:form>
-    </ui:define>
+						<p:column>
+							<f:facet name="header">Content</f:facet>
+							<h:outputText value="#{note.content}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">Options</f:facet>
+							<div class="btn-group">
+								<h:outputLink class="btn btn-outline-secondary btn-lg"
+									value="/edit/#{note.id}">Edit</h:outputLink>
+								<h:outputLink class="btn btn-outline-danger btn-lg"
+									value="/delete/#{note.id}">Delete</h:outputLink>
+							</div>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</div>
+		</h:form>
+	</ui:define>
 </ui:composition>
 </html>

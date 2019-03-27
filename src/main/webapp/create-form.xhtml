@@ -16,7 +16,9 @@
 							value="Name: " />
 						<div class="col-sm-10">
 							<h:inputText class="form-control" id="name"
-								value="#{noteController.note.name}" />
+								value="#{noteController.note.name}" required="true"
+								requiredMessage="Please enter the name" />
+							<h:message for="name" errorStyle="color:red; display:block"/>
 						</div>
 					</div>
 					<div class="form-group row">

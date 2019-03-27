@@ -12,23 +12,25 @@
 				<h:form id="noteForm" class="form-group">
 					<br></br>
 					<div class="form-group row">
-						<h:outputLabel class="col-sm-2 col-form-label" for="name" value="Name: " />
+						<h:outputLabel class="col-sm-2 col-form-label" for="name"
+							value="Name: " />
 						<div class="col-sm-10">
 							<h:inputText class="form-control" readonly="true" id="name"
 								value="#{noteDelete.note.name}" />
 						</div>
 					</div>
 					<div class="form-group row">
-						<h:outputLabel class="col-sm-2 col-form-label" for="content" value="Content: " />
+						<h:outputLabel class="col-sm-2 col-form-label" for="content"
+							value="Content: " />
 						<div class="col-sm-10">
-							<h:inputTextarea class="form-control" readonly="true" id="content"
-								value="#{noteDelete.note.content}" />
+							<h:inputTextarea class="form-control" readonly="true"
+								id="content" value="#{noteDelete.note.content}" />
 						</div>
 					</div>
 					<br></br>
 					<div class="form-group row mx-auto" style="width: 150px;">
-						<h:commandButton class="btn btn-danger btn-lg btn-block" value="Delete"
-							action="#{noteDelete.delete}" />
+						<h:commandButton class="btn btn-danger btn-lg btn-block"
+							value="Delete" action="#{noteDelete.delete}" />
 					</div>
 				</h:form>
 			</p:panel>
