@@ -12,3 +12,6 @@ vez que o projeto tiver sido importado para o ambiente de trabalho (através da 
 Existing Maven Projects"), basta executar o "Maven install" e executar a aplicação como "Java application". 
 O processo é somente esse pois o banco de dados escolhido foi o H2, que não precisa de demais configurações,
 e o servidor Tomcat está embutido no projeto (por causa do gerador de projetos start.spring.io).
+
+Como bônus, na rota /api foi colocado dois metodos, um respondendo a requisições do tipo GET que retorna um JSON 
+com todas as notas cadastradas, e outro que responde as requisições do tipo POST cadastrando uma nota no sistema.
